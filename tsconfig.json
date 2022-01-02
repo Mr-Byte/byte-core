@@ -1,0 +1,44 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "module": "ES2020",
+        "target": "ES2018",
+        "plugins": [
+            {
+                "name": "typescript-eslint-language-service"
+            }
+        ],
+        "lib": [
+            "DOM",
+            "ES6",
+            "ES2017",
+            "ES2018",
+            "ES2020"
+        ],
+        "moduleResolution": "node",
+        "allowJs": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "typeRoots": [
+            "node_modules/@types",
+            "node_modules/@league-of-foundry-developers"
+        ],
+        "newLine": "lf",
+        "skipLibCheck": true,
+        "jsx": "react",
+        "jsxFactory": "globalThis.byteCore.DOMFactory.createElement",
+        "baseUrl": "src/",
+        "outDir": "dist/lib/",
+        "declarationDir": "dist/types/",
+        "declaration": true,
+        "forceConsistentCasingInFileNames": true,
+    },
+    "exclude": [
+        "dist/**",
+        "node_modules/**"
+    ],
+    "include": [
+        "src/**/*",
+    ]
+}

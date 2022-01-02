@@ -1,0 +1,35 @@
+{
+  "name": "byte-core",
+  "version": "1.0.0",
+  "description": "Foundry VTT Module",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mr-Byte/byte-core.git"
+  },
+  "author": "Joshua Rodgers",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.mts"
+    }
+  },
+  "scripts": {
+    "build": "rimraf ./dist && tsc",
+    "postbuild": "node ./postbuild.mjs"
+  },
+  "bugs": {
+    "url": "https://github.com/Mr-Byte/byte-core/issues"
+  },
+  "homepage": "https://github.com/Mr-Byte/byte-core#readme",
+  "devDependencies": {
+    "@league-of-foundry-developers/foundry-vtt-types": "^9.238.1",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
+    "eslint": "^8.5.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.5.4",
+    "typescript-eslint-language-service": "^5.0.0"
+  }
+}
