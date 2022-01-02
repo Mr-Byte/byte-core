@@ -1,4 +1,4 @@
-import { type HUD, HUDName } from "./ui/hud/index.js";
+import * as hud from "./ui/hud/index.js";
 import DOMFactory from "./DOMFactory.js";
 
 declare global {
@@ -17,30 +17,30 @@ Hooks.on("init", () => {
 class ByteCore {
     readonly #game: Game;
     #hudModule?: typeof import("./ui/hud/index.js");
-    readonly #huds: Map<HUDName, HUD>;
+    readonly #huds: Map<hud.Name, hud.Manager>;
 
     constructor(game: Game) {
         this.#game = game;
         this.#huds = new Map();
     }
 
-    get drawingHUD(): Promise<HUD> {
-        return this.#createHUD(HUDName.DrawingHUD);
+    get drawingHUD(): Promise<hud.Manager> {
+        return this.#createHUD(hud.Name.DrawingHUD);
     }
 
-    get tokenHUD(): Promise<HUD> {
-        return this.#createHUD(HUDName.TokenHUD);
+    get tokenHUD(): Promise<hud.Manager> {
+        return this.#createHUD(hud.Name.TokenHUD);
     }
 
-    get tileHUD(): Promise<HUD> {
-        return this.#createHUD(HUDName.TileHUD);
+    get tileHUD(): Promise<hud.Manager> {
+        return this.#createHUD(hud.Name.TileHUD);
     }
 
-    async #createHUD(name: HUDName): Promise<HUD> {
+    async #createHUD(name: hud.Name): Promise<hud.Manager> {
         const hudModule = await this.#loadHUDModule();
 
         if (!this.#huds.has(name)) {
-            this.#huds.set(name, new hudModule.HUD(this.#game, name));
+            this.#huds.set(name, new hudModule.Manager(this.#game, name));
         }
 
         return this.#huds.get(name)!;

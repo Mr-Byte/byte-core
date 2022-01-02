@@ -1,6 +1,6 @@
-import HUDButton from "./components/HUDButton.js";
+import Button from "./components/Button.js";
 
-export interface HUDButtonProps {
+export interface ButtonProps {
     side: "left" | "right";
     title: string;
     icon: string;
@@ -8,24 +8,24 @@ export interface HUDButtonProps {
     shouldShow?: () => boolean;
 }
 
-export const enum HUDName {
+export const enum Name {
     DrawingHUD = "DrawingHUD",
     TokenHUD = "TokenHUD",
     TileHUD = "TileHUD"
 }
 
-export class HUD {
+export class Manager {
     readonly #game: Game;
-    readonly #buttons: Map<string, HUDButtonProps>;
+    readonly #buttons: Map<string, ButtonProps>;
 
-    constructor(game: Game, name: HUDName) {
+    constructor(game: Game, name: Name) {
         this.#game = game;
         this.#buttons = new Map();
 
         Hooks.on(`render${name}`, this.#render.bind(this));
     }
 
-    registerButton(id: string, props: HUDButtonProps) {
+    registerButton(id: string, props: ButtonProps) {
         this.#buttons.set(id, props);
     }
 
@@ -35,7 +35,7 @@ export class HUD {
 
             if (shouldShow) {
                 const title = this.#game.i18n.localize(props.title);
-                const button = <HUDButton title={title} icon={props.icon} onClick={() => props.onClick()} />;
+                const button = <Button title={title} icon={props.icon} onClick={() => props.onClick()} />;
                 html.find(`div.${props.side}`).append(button);
             }
         }

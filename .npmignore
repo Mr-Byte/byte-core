@@ -1,0 +1,9 @@
+.vscode/
+src/
+dist/lib/
+module.json
+postbuild.mjs
+tsconfig.json
+.eslintrc
+.gitignore
+.npmrc
