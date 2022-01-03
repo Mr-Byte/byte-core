@@ -14,7 +14,7 @@ Hooks.on("init", () => {
     }
 });
 
-class ByteCore {
+export class ByteCore {
     readonly #game: Game;
     #hudModule?: typeof import("./ui/hud/index.js");
     readonly #huds: Map<hud.Name, hud.Manager>;
