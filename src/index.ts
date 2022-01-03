@@ -17,26 +17,26 @@ Hooks.on("init", () => {
 export class ByteCore {
     readonly #game: Game;
     #hudModule?: typeof import("./ui/hud/index.js");
-    readonly #huds: Map<hud.Name, hud.Manager>;
+    readonly #huds: Map<hud.Name, hud.Manager<PlaceableObject>>;
 
     constructor(game: Game) {
         this.#game = game;
         this.#huds = new Map();
     }
 
-    get drawingHUD(): Promise<hud.Manager> {
+    get drawingHUD(): Promise<hud.Manager<Drawing>> {
         return this.#createHUD(hud.Name.DrawingHUD);
     }
 
-    get tokenHUD(): Promise<hud.Manager> {
+    get tokenHUD(): Promise<hud.Manager<Token>> {
         return this.#createHUD(hud.Name.TokenHUD);
     }
 
-    get tileHUD(): Promise<hud.Manager> {
+    get tileHUD(): Promise<hud.Manager<Tile>> {
         return this.#createHUD(hud.Name.TileHUD);
     }
 
-    async #createHUD(name: hud.Name): Promise<hud.Manager> {
+    async #createHUD(name: hud.Name): Promise<hud.Manager<PlaceableObject>> {
         const hudModule = await this.#loadHUDModule();
 
         if (!this.#huds.has(name)) {
