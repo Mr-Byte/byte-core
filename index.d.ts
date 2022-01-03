@@ -1,1 +1,1 @@
-import "./dist/types/index";
+import "./dist/types";
