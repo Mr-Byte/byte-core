@@ -11,7 +11,7 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.mts"
+      "types": "./index.d.ts"
     }
   },
   "scripts": {
