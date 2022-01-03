@@ -3,14 +3,14 @@
     "title": "byte-core",
     "description": "Base framework for mods written by MrByte.",
     "author": "MrByte",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "minimumCoreVersion": "9.238",
     "compatibleCoreVersion": "9.238",
     "esmodules": [
         "index.js"
     ],
     "url": "https://github.com/Mr-Byte/byte-core",
-    "download": "https://github.com/Mr-Byte/byte-core/releases/download/v1.0.0/byte-core.zip",
+    "download": "https://github.com/Mr-Byte/byte-core/releases/download/v1.1.0/byte-core.zip",
     "manifest": "https://raw.githubusercontent.com/Mr-Byte/byte-core/main/module.json",
     "bugs": "https://github.com/Mr-Byte/byte-core/issues",
     "allowBugReporter": true,
