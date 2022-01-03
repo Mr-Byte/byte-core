@@ -5,7 +5,7 @@ export interface ButtonProps<T extends PlaceableObject> {
     title: string;
     icon: string;
     onClick: (object: T) => void | Promise<void>;
-    shouldShow?: () => boolean;
+    shouldShow?: (object: T) => boolean;
 }
 
 export const enum Name {
@@ -31,7 +31,7 @@ export class Manager<T extends PlaceableObject> {
 
     #render(hud: BasePlaceableHUD, html: JQuery) {
         for (const [_, props] of this.#buttons) {
-            const shouldShow = props.shouldShow?.() ?? true;
+            const shouldShow = props.shouldShow?.(hud.object as T) ?? true;
 
             if (shouldShow) {
                 const title = this.#game.i18n.localize(props.title);
